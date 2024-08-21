@@ -11,9 +11,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.URL;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Map;
-import java.util.Set;
 
 @Slf4j
 @Service
@@ -32,6 +30,7 @@ public class UrlService {
             myObjectOutStream.close();
             myFileOutStream.close();
         } catch (IOException e) {
+            //should define another class
             throw new RuntimeException("could not serialize db", e);
         }
     }
@@ -47,7 +46,7 @@ public class UrlService {
             fileInput.close();
             return hashMap;
         } catch (FileNotFoundException ex) {
-            return new HashMap<Integer, URL>();
+            return new HashMap<>();
         //should not catch all
         } catch (Exception ex) {
             throw new RuntimeException("could not deserialize db", ex);
